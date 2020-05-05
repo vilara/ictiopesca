@@ -47,12 +47,12 @@
                         </div>
                         
                         <div class="form-group row">
-                            <label for="usuario" class="col-md-4 col-form-label text-md-right">{{ __('Usuário') }}</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-right">{{ __('Usuário') }}</label>
 
                             <div class="col-md-6">
-                                <input id="usuario" type="text" class="form-control @error('usuario') is-invalid @enderror" name="usuario" value="{{ old('usuario') }}"  autocomplete="usuario" autofocus>
+                                <input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}"  autocomplete="username" autofocus>
 
-                                @error('usuario')
+                                @error('username')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
