@@ -7,7 +7,7 @@
 <!-- CSRF Token -->
 <meta name="csrf-token" content="{{ csrf_token() }}">
 
-<title>Consilog @yield('title')</title>
+<title>Ictiopesca @yield('title')</title>
 
 <!-- Scripts -->
 
