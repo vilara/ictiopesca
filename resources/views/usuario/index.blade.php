@@ -16,7 +16,7 @@
 							<h3>{{ __('Usuários') }}</h3>
 						</div>
 						<div class="col-md-2" align="right">
-							<a href="../usuarios/create" class="btn btn-success">Novo
+							<a href="{{ url('/usuarios/create') }}" class="btn btn-success">Novo
 						
 							
 							</a>
@@ -45,7 +45,7 @@
 							<tr>
 							
 								
-								<td>{{ $usuario->name }}</td>
+								<td><a href="{{ route('usuarios.show',$usuario->id)}}" style="color: inherit;">{{ $usuario->id }}</a></td>
 								<td>{{ $usuario->email }}</td>
 								<td>{{ $usuario->username }}</td>
 

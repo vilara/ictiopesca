@@ -15,8 +15,22 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
-                    </ul>
+<!-- 							<li class="nav-item"> -->
+<!--                                 <a class="nav-link" href="{{ route('login') }}">Admin</a> -->
+<!--                             </li> -->
+ 					@auth
+						<li class="nav-item dropdown">
+						<a class="nav-link dropdown-toggle pt-3"	href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Admin </a>
+							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ url('/usuarios') }}">Usuários</a> 
+								<a class="dropdown-item" href="#">abaixo</a>
+									<div class="dropdown-divider"></div>
+								<a class="dropdown-item" href="#">Teste</a>
+							</div>
+						</li>
+					 @endauth				
+							
+					</ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
