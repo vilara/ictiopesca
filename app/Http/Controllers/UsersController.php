@@ -65,9 +65,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $usuario)
     {
-        //
+        return view('usuario.edit', compact('usuario'));
     }
 
     /**
@@ -77,9 +77,15 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $usuario)
     {
-        //
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->username = $request->username;
+        
+        $usuario->save();
+        
+        return redirect('/usuarios')->with ('success', 'Usuário editado com sucesso');
     }
 
     /**
@@ -88,8 +94,9 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(User $usuario)
     {
-        //
+        $usuario->delete();
+        return redirect('/usuarios')->with ('success', 'Usuário excluído com sucesso');
     }
 }

@@ -45,7 +45,7 @@
 							<tr>
 							
 								
-								<td><a href="{{ route('usuarios.show',$usuario->id)}}" style="color: inherit;">{{ $usuario->id }}</a></td>
+								<td><a href="{{ route('usuarios.show',$usuario->id)}}" style="color: inherit;">{{ $usuario->name }}</a></td>
 								<td>{{ $usuario->email }}</td>
 								<td>{{ $usuario->username }}</td>
 
