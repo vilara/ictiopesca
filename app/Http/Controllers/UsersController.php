@@ -35,14 +35,20 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $data, User $usuario)
+    public function store(Request $request)
     {
-        $usuario->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'username' => $data['username'],
-            'password' => Hash::make($data['password']),
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
         ]);
+        
+        dd(request()->all());
+        
+//         $usuario->create([
+//             'name' => $data['name'],
+//             'email' => $data['email'],
+//             'username' => $data['username'],
+//             'password' => Hash::make($data['password']),
+//         ]);
         
      
         return redirect('/usuarios')->with ('success', 'Usuário cadastrado com sucesso');
@@ -79,11 +85,18 @@ class UsersController extends Controller
      */
     public function update(Request $request, User $usuario)
     {
-        $usuario->name = $request->name;
-        $usuario->email = $request->email;
-        $usuario->username = $request->username;
+      
+        $data = $request->all();
+//         $usuario->name = $request->name;
+//         $usuario->email = $request->email;
+//         $usuario->username = $request->username;
+
+        if($data['password'] != null)
+            $data['password'] = Hash::make($data['password']);
+        else 
+            unset($data['password']);
         
-        $usuario->save();
+        $usuario->update($data);
         
         return redirect('/usuarios')->with ('success', 'Usuário editado com sucesso');
     }
