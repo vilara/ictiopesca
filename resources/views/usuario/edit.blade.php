@@ -8,12 +8,12 @@
 
 <div class="col-md-8">
 
-@if (count($errors) > 0)
+<!-- @if (count($errors) > 0) -->
 
-@foreach ($errors->all() as $error)
-<p class="alert alert-danger">{{ $error }}</p>
-@endforeach
-@endif
+<!-- @foreach ($errors->all() as $error) -->
+<!-- <p class="alert alert-danger">{{ $error }}</p> -->
+<!-- @endforeach -->
+<!-- @endif -->
 
  <div class="card">
  <div class="card-header">
@@ -83,11 +83,13 @@
 
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
-
+                                    
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
+                                    @else
+                                    <small id="emailHelp" class="form-text text-muted alert-danger">Preencha somente se desejar alterar a senha!</small>   
                                 @enderror
                             </div>
                         </div>

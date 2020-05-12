@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Requests\StoreUsers;
+use App\Http\Requests\UpdateUsers;
 
 class UsersController extends Controller
 {
@@ -35,20 +37,17 @@ class UsersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUsers $data, User $usuario)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|max:255',
+      
+//         dd(request()->all());
+        
+        $usuario->create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'username' => $data['username'],
+            'password' => Hash::make($data['password']),
         ]);
-        
-        dd(request()->all());
-        
-//         $usuario->create([
-//             'name' => $data['name'],
-//             'email' => $data['email'],
-//             'username' => $data['username'],
-//             'password' => Hash::make($data['password']),
-//         ]);
         
      
         return redirect('/usuarios')->with ('success', 'Usuário cadastrado com sucesso');
@@ -83,14 +82,11 @@ class UsersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, User $usuario)
+    public function update(UpdateUsers $request, User $usuario)
     {
       
         $data = $request->all();
-//         $usuario->name = $request->name;
-//         $usuario->email = $request->email;
-//         $usuario->username = $request->username;
-
+//       
         if($data['password'] != null)
             $data['password'] = Hash::make($data['password']);
         else 
