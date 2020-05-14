@@ -18,7 +18,7 @@
                 
                 <div class="row">
 						<div class="col-md-10">
-							<h3>{{ __('Cadastro de usuário') }}</h3>
+							<h3>{{ __('Cadastro de Usuário ') }}</h3>
 						</div>
 						<div class="col-md-2" align="right">
 							<a href="/usuarios" class="btn btn-success">Lista</a>

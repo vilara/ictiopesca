@@ -36,12 +36,13 @@
 								<th scope="col">Nome Completo</th>
 								<th scope="col">E-mail</th>
 								<th scope="col">Usuário</th>
+								<th scope="col">Perfil</th>
 								<th scope="col">Ações</th>
 							</tr>
 						</thead>
 						
 						<tbody align="center">
-							@foreach ($user as $usuario)
+							@foreach ($usuarios as $usuario)
 							<tr>
 							
 								
@@ -49,7 +50,12 @@
 								<td>{{ $usuario->email }}</td>
 								<td>{{ $usuario->username }}</td>
 
-								
+		@if($usuario->profile->count() > 0)				
+<td><a href="{{ url('/profiles/'. $usuario->profile->id)}}" title="Visualizar perfil" style="color: inherit;"><i class="far fa-address-card"></i></a></td>
+@else
+<td><a href="{{ url('/usuario/profile/'. $usuario->id)}}">incluir</a></td>
+@endif
+
 
 
 
