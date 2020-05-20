@@ -23,6 +23,7 @@
 						<a class="nav-link dropdown-toggle pt-3"	href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Admin </a>
 							<div class="dropdown-menu" aria-labelledby="navbarDropdown">
 								<a class="dropdown-item" href="{{ url('/usuarios') }}">Usuários</a> 
+								<a class="dropdown-item" href="{{ url('/photos') }}">Photos</a> 
 								<a class="dropdown-item" href="#">abaixo</a>
 									<div class="dropdown-divider"></div>
 								<a class="dropdown-item" href="#">Teste</a>

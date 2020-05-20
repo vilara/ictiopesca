@@ -23,3 +23,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/usuarios', 'UsersController');
 Route::get('/usuario/profile/{id}', 'ProfilesController@createProfile');
 Route::resource('/profiles', 'ProfilesController');
+Route::resource('photos', 'PhotoController');
+Route::resource('posts', 'PostController');
