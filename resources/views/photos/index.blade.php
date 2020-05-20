@@ -44,13 +44,14 @@
 						<tbody align="center">
 							@foreach ($photos as $photo)
 							<tr>
+							<td>{{ $photo->user->username }}</td>
 							
-								
+								@can('update', $photo)
 								<td><a href="{{ route('photos.show',$photo->id)}}" style="color: inherit;">{{ $photo->title }}</a></td>
 								<td>{{ $photo->text }}</td>
 								<td>{{ $photo->user->username }}</td>
 
-	
+								@endcan
 
 
 
@@ -58,7 +59,6 @@
 
 								<td>
 									<div class="row">
-									@if(Auth::user()->can('editPhoto', $photo))
 										<div class="col-md-6 pt-0">
 											<a href="{{ route('photos.edit',$photo->id) }}"	style="color: inherit;"><i class="far fa-edit"></i></a>
 										</div>
@@ -69,7 +69,6 @@
 											<button class="btn form-control pt-0" type="submit"><i class="far fa-trash-alt"></i></button>
 											</form>
 										</div>
-									@endif
 									</div>
 								</td>
 							</tr>

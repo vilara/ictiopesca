@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUsers;
+use Illuminate\Support\Facades\Auth;
 
 class UsersController extends Controller
 {
@@ -17,7 +18,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $usuarios = User::all();      
+        $usuarios = User::all();
         return view ( 'usuario.index', compact ( 'usuarios' ) );
     }
 

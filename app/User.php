@@ -56,4 +56,28 @@ class User extends Authenticatable
         return $this->hasOne('App\Post');
     }
     
+    public function rolers()
+    {
+        return $this->belongsToMany('App\Roler');
+    }
+    
+    public function hasPermission(Permission $permission){
+        
+       return $this->hasAnyRolers($permission->rolers());
+       
+        
+    }
+    
+    public function hasAnyRolers($rolers){
+      
+//         if( is_array($rolers) || is_object($rolers)){
+//             foreach ($rolers as $roler){
+//                 $this->hasAnyRolers($roler);
+//             }
+//         }
+            
+           return $this->rolers->contains('name', $rolers);
+           
+    }
+    
 }
