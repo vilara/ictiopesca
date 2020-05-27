@@ -56,28 +56,32 @@ class User extends Authenticatable
         return $this->hasOne('App\Post');
     }
     
-    public function rolers()
+    public function photos()
     {
-        return $this->belongsToMany('App\Roler');
+        return $this->hasMany('App\Photo');
+    }
+    
+    public function roler()
+    {
+        return $this->belongsToMany('App\Roler', 'roler_user', 'user_id', 'roler_id');
     }
     
     public function hasPermission(Permission $permission){
         
-       return $this->hasAnyRolers($permission->rolers());
-       
-        
+        return $this->hasAnyRolers($permission->rolers);
     }
     
-    public function hasAnyRolers($rolers){
+    public function hasAnyRolers($rols){
+        
+            foreach ($rols as $rol){
+                if($this->roler->contains('name', $rol->name)){
+                    return true;
+                }
+            }
+        
       
-//         if( is_array($rolers) || is_object($rolers)){
-//             foreach ($rolers as $roler){
-//                 $this->hasAnyRolers($roler);
-//             }
-//         }
-            
-           return $this->rolers->contains('name', $rolers);
-           
     }
+    
+    
     
 }

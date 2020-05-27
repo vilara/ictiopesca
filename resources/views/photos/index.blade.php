@@ -46,11 +46,10 @@
 							<tr>
 							<td>{{ $photo->user->username }}</td>
 							
-								@can('update', $photo)
+								@can('update', $photo->user)
 								<td><a href="{{ route('photos.show',$photo->id)}}" style="color: inherit;">{{ $photo->title }}</a></td>
 								<td>{{ $photo->text }}</td>
 								<td>{{ $photo->user->username }}</td>
-
 								@endcan
 
 

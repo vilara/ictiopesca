@@ -25,3 +25,4 @@ Route::get('/usuario/profile/{id}', 'ProfilesController@createProfile');
 Route::resource('/profiles', 'ProfilesController');
 Route::resource('photos', 'PhotoController');
 Route::resource('posts', 'PostController');
+Route::get('/rolers-permissions', 'HomeController@update');

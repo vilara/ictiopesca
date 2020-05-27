@@ -49,6 +49,8 @@
 								<td><a href="{{ route('usuarios.show',$usuario->id)}}" style="color: inherit;">{{ $usuario->name }}</a></td>
 								<td>{{ $usuario->email }}</td>
 								<td>{{ $usuario->username }}</td>
+								
+								
 
 		@if($usuario->profile->count() > 0)				
 <td><a href="{{ url('/profiles/'. $usuario->profile->id)}}" title="Visualizar perfil" style="color: inherit;"><i class="far fa-address-card"></i></a></td>
