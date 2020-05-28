@@ -31,7 +31,7 @@ class AuthServiceProvider extends ServiceProvider
         
               
                
-        $permissions = Permission::with('rolers')->where('id',2)->get();
+        $permissions = Permission::with('rolers')->get();
         
         foreach ($permissions as $permission){
             Gate::define($permission->name, function (User $user) use ($permission){
