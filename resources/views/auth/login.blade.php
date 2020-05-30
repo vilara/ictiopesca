@@ -20,7 +20,7 @@
         <h1>Ictiopesca</h1>
       </div>
       <div class="login-box">
-        <form class="login-form"method="POST" action="{{ route('login') }}">
+        <form class="login-form"method="POST" action="{{ action('AuthController@authenticate') }}">
                         @csrf
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ENTRAR</h3>
           <div class="form-group">
@@ -46,7 +46,7 @@
             <div class="utility">
               <div class="animated-checkbox">
                 <label>
-                  <input type="checkbox"><span class="label-text">Manter</span>
+                  <input type="checkbox" name="remember" value="1"><span class="label-text">Manter</span>
                 </label>
               </div>
               <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Recuperar senha ?</a></p>

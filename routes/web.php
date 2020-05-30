@@ -14,15 +14,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'PagesController@welcome');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function(){
+    return view('auth.login');
+});
 
-Route::resource('/usuarios', 'UsersController');
-Route::get('/usuario/profile/{id}', 'ProfilesController@createProfile');
-Route::resource('/profiles', 'ProfilesController');
+// Login personlizado
+Route::get('/cadastroUsuario', 'AuthController@formCadastro');
+Route::post('/loginPessoal', 'AuthController@authenticate');
+Route::post('/logoutt', 'AuthController@logout')->name('logoutt');
+
+    
 Route::resource('photos', 'PhotoController');
-Route::resource('posts', 'PostController');
-Route::get('/rolers-permissions', 'HomeController@update');
+Route::resource('usuarios', 'UsersController');
+Route::resource('profiles', 'ProfilesController');
+
+
+Route::get('/home', 'HomeController@index')->name('home');
+    
+
+
+
+Route::get('/usuario/profile/{id}', 'ProfilesController@createProfile');

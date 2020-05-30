@@ -1,46 +1,48 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Providers\RouteServiceProvider;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Validator;
 
-class RegisterController extends Controller
+class AuthController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
-
-    /**
-     * Where to redirect users after registration.
-     *
-     * @var string
-     */
+    
+    
     protected $redirectTo = RouteServiceProvider::HOME;
-
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
+    
+    public  function formCadastro(){
+        return view('teste');
     }
-
+    
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return Response
+     */
+    public function authenticate(Request $request)
+    {
+      if($request->remember == 1) {
+          $remember = true; 
+        }
+          else{
+              $remember =  false;
+            }
+        $credentials = $request->only('username', 'password');
+        if (Auth::attempt($credentials,$remember)) {
+            // Authentication passed...
+            return redirect()->intended('home');
+        }
+    }
+    
+    
     /**
      * Get a validator for an incoming registration request.
      *
@@ -60,7 +62,7 @@ class RegisterController extends Controller
         
     }
     
-
+    
     /**
      * Create a new user instance after a valid registration.
      *
@@ -76,5 +78,11 @@ class RegisterController extends Controller
             'ativo' => 1,
             'password' => Hash::make($data['password']),
         ]);
+    }
+    
+    public function logout()
+    {
+       Auth::logout();
+       return redirect()->intended('/');
     }
 }

@@ -52,7 +52,7 @@ class UsersController extends Controller
         ]);
         
      
-        return redirect('/usuarios')->with ('success', 'Usuário cadastrado com sucesso');
+        return redirect('/home')->with ('success', 'Usuário cadastrado com sucesso');
     }
 
     /**

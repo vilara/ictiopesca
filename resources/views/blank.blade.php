@@ -1,6 +1,4 @@
-  @extends('layouts.app') 
-  @section('title','Ictiopesca') 
-  @section('content')
+  @extends('layouts.app') @section('title','Ictiopesca') @section('content')
   <div class="app-title">
         <div>
           <h1><i class="fa fa-dashboard"></i> Blank Page</h1>
