@@ -30,7 +30,10 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view ( 'usuario.create');
+        
+        $usuarios = User::all();
+      
+        return view ( 'usuario.create', compact('usuarios'));
     }
 
     /**
@@ -52,7 +55,7 @@ class UsersController extends Controller
         ]);
         
      
-        return redirect('/home')->with ('success', 'Usuário cadastrado com sucesso');
+        return redirect()->action('UsersController@create')->with('success', 'Usuário cadastrado com sucesso');
     }
 
     /**
@@ -96,7 +99,7 @@ class UsersController extends Controller
         
         $usuario->update($data);
         
-        return redirect('/usuarios')->with ('success', 'Usuário editado com sucesso');
+        return redirect()->action('UsersController@create')->with('success', 'Usuário alterado com sucesso');
     }
 
     /**

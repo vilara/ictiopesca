@@ -25,9 +25,15 @@ Route::get('/cadastroUsuario', 'AuthController@formCadastro');
 Route::post('/loginPessoal', 'AuthController@authenticate');
 Route::post('/logoutt', 'AuthController@logout')->name('logoutt');
 
+Route::group(['middleware' => ['auth']], function(){
+    
+Route::resource('usuarios', 'UsersController');
+    
+});
+
+
     
 Route::resource('photos', 'PhotoController');
-Route::resource('usuarios', 'UsersController');
 Route::resource('profiles', 'ProfilesController');
 
 

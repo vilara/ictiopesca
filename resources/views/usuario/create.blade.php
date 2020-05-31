@@ -3,7 +3,7 @@
 <div class="app-title">
 	<div>
 		<h1>
-			<i class="fa fa-dashboard"></i> CADASTROSs
+			<i class="fa fa-dashboard"></i> CADASTROS
 		</h1>
 		<p>Registro de novo usuário</p>
 	</div>
@@ -54,6 +54,40 @@
 				</form>
 			</div>
 		</div>
+		
+		
+		<hr>
+		
+		
+		<div class="tile">
+            <h3 class="tile-title">Listagem de usuários</h3>
+            <div class="table-responsive">
+              <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Username</th>
+                     <th>Ação</th>
+                  </tr>
+                </thead>
+                <tbody>
+                @foreach($usuarios as $usuario)
+                  <tr>
+                    <td>{{$usuario->id}}</td>
+                    <td>{{$usuario->name}}</td>
+                    <td>{{$usuario->email}}</td>
+                    <td>{{$usuario->username}}</td>
+                    <td><a href="{{ route('usuarios.edit',$usuario->id) }}">alterar</a> | <a href="$">excluir</a></td>
+                  </tr>
+                 @endforeach 
+                </tbody>
+              </table>
+            </div>
+          </div>
+		
+		
 	</div>
 
 
