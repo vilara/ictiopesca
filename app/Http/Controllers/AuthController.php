@@ -35,10 +35,11 @@ class AuthController extends Controller
           else{
               $remember =  false;
             }
-        $credentials = $request->only('username', 'password');
-        if (Auth::attempt($credentials,$remember)) {
+            if (Auth::attempt(['username' => $request->username, 'password' => $request->password, 'ativo' => 1],$remember)) {
             // Authentication passed...
             return redirect()->intended('home');
+        }else{
+            return redirect()->intended('/login')->with('success', 'Usuário ou senha incorretos...');;
         }
     }
     

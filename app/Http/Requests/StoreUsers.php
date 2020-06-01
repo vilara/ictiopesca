@@ -42,7 +42,7 @@ class StoreUsers extends FormRequest
             'email.unique' => 'Este email já foi cadastrado anteriormente!',
             'password.required' => 'Campo obrigatório!',
             'password.min' => 'A Senha deve conter no mínimo 8 caracteres!',
-            'password.confirmed' => 'Confirmação deve ser idêntica a senha!',
+            'password.confirmed' => 'A confirmação deve ser idêntica a senha!',
         ];
     }
 }

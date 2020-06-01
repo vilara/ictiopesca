@@ -45,7 +45,7 @@ class UsersController extends Controller
     public function store(StoreUsers $data, User $usuario)
     {
       
-//         dd(request()->all());
+         dd(request()->all());
         
         $usuario->create([
             'name' => $data['name'],
@@ -111,6 +111,6 @@ class UsersController extends Controller
     public function destroy(User $usuario)
     {
         $usuario->delete();
-        return redirect('/usuarios')->with ('success', 'Usuário excluído com sucesso');
+        return redirect()->action('UsersController@create')->with('success', 'Usuário cadastrado com sucesso');
     }
 }

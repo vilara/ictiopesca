@@ -2,29 +2,23 @@
 
 
 
-
-<div class="container">
-	<div class="row justify-content-center">
-
-		<div class="col-md-8">
-
-
-
-
-			<div class="card">
-			
-				<div class="card-header">
-					<div class="row">
-						<div class="col-md-10">
-							<h3>{{ __('Edição') }}</h3>
-						</div>
-						<div class="col-md-2 py-auto">
-							<a href="/usuarios" class="btn btn-success">Voltar</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="card-body">
+<div class="app-title">
+	<div>
+		<h1>
+			<i class="fa fa-dashboard"></i> CADASTROS
+		</h1>
+		<p>Perfil de {{$usuario->name}}</p>
+	</div>
+	<ul class="app-breadcrumb breadcrumb">
+		<li class="breadcrumb-item"><i class="fa fa-home fa-lg"></i></li>
+		<li class="breadcrumb-item"><a href="#">Cadastro</a></li>
+	</ul>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="tile">
+			<h3 class="tile-title"><p>Perfil de {{$usuario->name}}</p></h3>
+			<div class="tile-body">
 
 					<form class="form-horizontal" method="post"
 						action="{{ route('usuarios.update', $usuario->id) }}">
@@ -87,7 +81,7 @@
 									action="{{ route('usuarios.destroy',$usuario->id) }}"
 									method="post">
 									@csrf @method('DELETE')
-									<button class="btn btn-success" type="submit" align="left">{{
+									<button class="btn btn-success" type="submit"  onclick="return confirm('Deseja mesmo excuir este usuário?')" align="left">{{
 										__('Excluir') }}</button>
 								</form>
 							</div>

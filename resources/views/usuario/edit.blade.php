@@ -17,7 +17,7 @@
 <div class="row">
 	<div class="col-md-12">
 		<div class="tile">
-			<h3 class="tile-title">Novo usuário</h3>
+			<h3 class="tile-title">Edição</h3>
 			<div class="tile-body">
  
  <form class="form-row" method="post" action="{{ route('usuarios.update', $usuario->id) }}">
@@ -33,7 +33,7 @@
 								<input id="name" type="text"
 									class="form-control @error('name') is-invalid @enderror"
 									name="name" value="{{ $usuario->name }}"
-									autofocus> @error('name') <span class="invalid-feedback"
+									required autofocus> @error('name') <span class="invalid-feedback"
 									role="alert"> <strong>{{ $message }}</strong>
 								</span> @enderror
 						</div>
@@ -43,10 +43,7 @@
 								}}</label>
 
 							
-								<input id="username" type="text"
-									class="form-control @error('username') is-invalid @enderror"
-									name="username" value="{{ $usuario->username }}"
-									 autofocus> @error('username') <span
+								<input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $usuario->username }}" required autofocus> @error('username') <span
 									class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong>
 								</span> @enderror
 							

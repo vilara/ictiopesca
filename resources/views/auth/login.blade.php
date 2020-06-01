@@ -23,24 +23,21 @@
         <form class="login-form"method="POST" action="{{ action('AuthController@authenticate') }}">
                         @csrf
           <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>ENTRAR</h3>
-          <div class="form-group">
-            <label class="control-label">USUÁRIO</label>
-            <input class="form-control @error('username') is-invalid @enderror" type="text" name="username" {{ old('username') }} placeholder="Usuário" required autofocus>
-
-					@error('email') 
-					<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong>
-					</span>
-					 @enderror
-					 
+          <div class="form-group  has-danger"">
+          
+            <label class="form-control-label">USUÁRIO</label>
+            <input class="form-control @if(session()->get('success')) is-invalid @enderror" type="text"  id="inputInvalid" name="username" {{ old('username') }} placeholder="Usuário" required autofocus>
+				
+					@if(session()->get('success'))
+				<div class="form-control-feedback" style="color: red;">{{ session()->get('success') }}</div>
+					  @endif
+					  
+					  
 				</div>
-          <div class="form-group">
+          <div class="form-group  has-success">
             <label class="control-label">SENHA</label>
-            <input class="form-control  @error('password') is-invalid @enderror" name="password" type="password" required placeholder="Password">
-        
-					@error('password') 
-					<span class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong>
-					</span>
-					 @enderror
+            <input class="form-control @if(session()->get('success')) is-invalid @enderror" name="password" type="password" required placeholder="Password">
+       								
           </div>
           <div class="form-group">
             <div class="utility">
