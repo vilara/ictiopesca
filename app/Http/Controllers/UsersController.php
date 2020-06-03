@@ -99,7 +99,8 @@ class UsersController extends Controller
         
         $usuario->update($data);
         
-        return redirect()->action('UsersController@create')->with('success', 'Usuário alterado com sucesso');
+        
+        return redirect()->action('UsersController@create')->with('success', 'Usuário editado com sucesso!');
     }
 
     /**
