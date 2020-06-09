@@ -45,7 +45,7 @@ class UsersController extends Controller
     public function store(StoreUsers $data, User $usuario)
     {
       
-         dd(request()->all());
+         
         
         $usuario->create([
             'name' => $data['name'],
