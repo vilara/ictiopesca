@@ -43,7 +43,7 @@
 								}}</label>
 
 							
-								<input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $usuario->username }}" required autofocus> @error('username') <span
+								<input id="username" type="text" class="form-control @error('username') is-invalid @enderror" name="username" value="{{ $usuario->username }}" required autofocus readonly="readonly"> @error('username') <span
 									class="invalid-feedback" role="alert"> <strong>{{ $message }}</strong>
 								</span> @enderror
 							
@@ -56,14 +56,32 @@
 							
 								<input id="email" type="email"
 									class="form-control @error('email') is-invalid @enderror"
-									name="email" value="{{ $usuario->email }}" >
+									name="email" value="{{ $usuario->email }}" readonly="readonly">
 
 								@error('email') <span class="invalid-feedback" role="alert"> <strong>{{
 										$message }}</strong>
 								</span> @enderror
 						</div>
 						
-						 <div class="form-group col-md-6">
+						
+						<div class="form-group col-md-4">
+							<label  class="exampleSelect1">{{
+								__('Perfil') }}</label>
+					
+                    <select class="form-control" id="exampleSelect1" name="roler" >
+                    @foreach($usuario->roler as $rol) 
+                   	 @foreach($rolers as $roll)
+                     	 <option  value="{{$roll->id}}" @if($roll->id == $rol->id) selected  @endif @cannot('update') disabled @endcan>{{$roll->name}}</option>
+                  	  @endforeach
+					@endforeach
+                    </select>
+							
+								@error('perfil') <span class="invalid-feedback" role="alert"> <strong>{{
+										$message }}</strong>
+								</span> @enderror
+						</div>
+						
+						 <div class="form-group col-md-4">
                             <label  class="control-label">{{ __('Senha') }}</label>
 
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password"  autocomplete="new-password">
@@ -77,7 +95,7 @@
                                 @enderror
                         </div>
 
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label  class="control-label">{{ __('Confirmar senha') }}</label>
 
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation"  autocomplete="new-password">

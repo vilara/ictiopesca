@@ -22,6 +22,7 @@ Route::get('/', function(){
 
 // Login personlizado
 Route::get('/cadastroUsuario', 'AuthController@formCadastro');
+Route::post('/storeUsuario', 'AuthController@store');
 Route::post('/loginPessoal', 'AuthController@authenticate');
 Route::post('/logoutt', 'AuthController@logout')->name('logoutt');
 

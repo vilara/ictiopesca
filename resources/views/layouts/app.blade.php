@@ -76,6 +76,7 @@
           </ul>
         </li>
         <!-- User Menu-->
+        @auth
         <li class="dropdown"><a class="app-nav__item" href="#" data-toggle="dropdown" aria-label="Open Profile Menu"><i class="fa fa-user fa-lg"></i></a>
           <ul class="dropdown-menu settings-menu dropdown-menu-right">
             <li><a class="dropdown-item" href="*"><i class="fa fa-cog fa-lg"></i> Configurações</a></li>
@@ -87,6 +88,7 @@
             
           </ul>
         </li>
+        @endauth
       </ul>
     </header>
     <!-- Sidebar menu-->
@@ -105,10 +107,10 @@
         
         
          
-        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Cadastrar</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+        <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Perfil</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item active" href="{{route('usuarios.create')}}"><i class="icon fa fa-circle-o"></i>Usuário</a></li>
-            <li><a class="treeview-item" href="*"><i class="icon fa fa-circle-o"></i>Perfil</a></li>
+<!--             <li><a class="treeview-item" href="*"><i class="icon fa fa-circle-o"></i>Perfil</a></li> -->
           </ul>
         </li>
 

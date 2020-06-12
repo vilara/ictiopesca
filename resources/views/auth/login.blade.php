@@ -46,7 +46,8 @@
                   <input type="checkbox" name="remember" value="1"><span class="label-text">Manter</span>
                 </label>
               </div>
-              <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Recuperar senha ?</a></p>
+               <p class="semibold-text mb-2"><a href="{{ url('/cadastroUsuario')}}">Cadastro</a></p>
+<!--               <p class="semibold-text mb-2"><a href="#" data-toggle="flip">Recuperar senha ?</a></p> -->
             </div>
           </div>
           <div class="form-group btn-container">

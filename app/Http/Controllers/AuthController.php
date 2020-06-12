@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Http\Requests\StoreUsers;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,7 +18,24 @@ class AuthController extends Controller
     protected $redirectTo = RouteServiceProvider::HOME;
     
     public  function formCadastro(){
-        return view('teste');
+        return view('cadastro');
+    }
+    
+    public function store(StoreUsers $data, User $usuario)
+    {
+        $usuario->name = $data->name;
+        $usuario->username = $data->username;
+        $usuario->email = $data->email;        
+        $usuario->password = Hash::make($data->password);
+        $usuario->ativo = 1;
+        $usuario->updated_at = now();  
+        $usuario->created_at = now(); 
+        $usuario->save();
+        $usuario->roler()->attach(4);
+        
+        
+        
+        return redirect()->action('UsersController@create')->with('success', 'Usuário cadastrado com sucesso');
     }
     
     /**

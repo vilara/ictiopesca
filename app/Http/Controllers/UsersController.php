@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\StoreUsers;
 use App\Http\Requests\UpdateUsers;
 use Illuminate\Support\Facades\Auth;
+use App\Roler;
 
 class UsersController extends Controller
 {
@@ -30,9 +31,15 @@ class UsersController extends Controller
      */
     public function create()
     {
+       
+        if (Auth::user()->can('delete', Auth::user())) {
+            $usuarios = User::all();
+        }else{
+            
+        $usuarios = Auth::user();
+        }
         
-        $usuarios = User::all();
-      
+     
         return view ( 'usuario.create', compact('usuarios'));
     }
 
@@ -45,14 +52,19 @@ class UsersController extends Controller
     public function store(StoreUsers $data, User $usuario)
     {
       
-         
+        $data->password = Hash::make($data->password);
         
-        $usuario->create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'username' => $data['username'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $usuario->name = $data->name;
+        $usuario->username = $data->username;
+        $usuario->email = $data->email;
+        $usuario->password = Hash::make($data->password);
+        $usuario->ativo = 1;
+        $usuario->updated_at = now();
+        $usuario->created_at = now();
+        
+        $usuario->save();
+        $usuario->roler()->attach(4);
+        
         
      
         return redirect()->action('UsersController@create')->with('success', 'Usuário cadastrado com sucesso');
@@ -77,7 +89,8 @@ class UsersController extends Controller
      */
     public function edit(User $usuario)
     {
-        return view('usuario.edit', compact('usuario'));
+        $rolers = Roler::all();
+        return view('usuario.edit', compact('usuario', 'rolers'));
     }
 
     /**
@@ -89,15 +102,29 @@ class UsersController extends Controller
      */
     public function update(UpdateUsers $request, User $usuario)
     {
-      
-        $data = $request->all();
-//       
-        if($data['password'] != null)
-            $data['password'] = Hash::make($data['password']);
-        else 
-            unset($data['password']);
+     //   dd($request);
+        $usuario->name =   $request->name;
+        $usuario->username =   $request->username;
+        $usuario->email =   $request->email;
         
-        $usuario->update($data);
+        //$data = $request->all();
+   
+//       
+
+     
+        if($request->password != null){
+            
+            $usuario->password = Hash::make($request->password);
+        }
+        else{
+            unset($usuario->password);
+        }
+            $usuario->save();
+            if (isset($request->roler)) {
+            $usuario->roler()->detach();
+            $usuario->roler()->attach($request->roler);
+            }
+           ;
         
         
         return redirect()->action('UsersController@create')->with('success', 'Usuário editado com sucesso!');
