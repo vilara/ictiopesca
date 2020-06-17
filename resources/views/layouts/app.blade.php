@@ -117,6 +117,7 @@
            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Admin</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item active" href="{{route('pesc_especies.create')}}"><i class="icon fa fa-circle-o"></i>Espécies</a></li>
+              <li><a class="treeview-item active" href="{{route('pesc_localidades.create')}}"><i class="icon fa fa-circle-o"></i>Localidades</a></li>
 <!--             <li><a class="treeview-item" href="*"><i class="icon fa fa-circle-o"></i>Perfil</a></li> -->
           </ul>
         </li>

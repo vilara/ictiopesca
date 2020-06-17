@@ -88,7 +88,12 @@
                     <td>
                     <div class="row">
                     <div class="col-md-6 text-right pr-0" style="width: 70px;">
-                    <a class="text-right" href="{{ route('pesc_especies.edit',$especie->id) }}" style="text-decoration:none; color: black;"><i class="fa fa-pencil" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;|</a>
+                    @can('delete')
+                    <a class="text-right" href="{{ route('pesc_especies.edit',$especie->id) }}" style="text-decoration:none; color: black;">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                     &nbsp;&nbsp;&nbsp;&nbsp;|</a>
+                    @endcan
+                    &nbsp;&nbsp;&nbsp;&nbsp;|
                     </div>
                     
                     <div class="col-md-6 text-left pl-0" style="width: 10px; height: 20px">
