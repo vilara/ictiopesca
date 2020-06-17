@@ -96,7 +96,9 @@
 							<td>{{$localidade->id}}</td>
 							<td><a href="{{ route('pesc_localidades.show',$localidade->id)}}"
 								style="color: inherit;">{{ $localidade->localidade }}</a></td>
-							<td>{{$localidade->pesc_municipio->municipio}}</td>
+							@foreach($localidade->pesc_municipio as $mun)	
+							<td>{{$mun->municipio}}</td>
+							@endforeach
 							<td>
 								<div class="row">
 									<div class="col-md-6 text-right pr-0" style="width: 70px;">
