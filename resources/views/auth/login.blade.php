@@ -26,7 +26,7 @@
           <div class="form-group  has-danger"">
           
             <label class="form-control-label">USUÁRIO</label>
-            <input class="form-control @if(session()->get('success')) is-invalid @enderror" type="text"  id="inputInvalid" name="username" {{ old('username') }} placeholder="Usuário" required autofocus>
+            <input class="form-control @if(session()->get('success')) is-invalid @enderror" type="text"  id="inputInvalid" name="username"  placeholder="Usuário"  autocomplete="off" required autofocus>
 				
 					@if(session()->get('success'))
 				<div class="form-control-feedback" style="color: red;">{{ session()->get('success') }}</div>
