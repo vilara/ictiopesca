@@ -25,8 +25,7 @@ class PescLocalidadeController extends Controller
      */
     public function create()
     {
-       
-        $localidades = Pesc_localidade::all();
+        $localidades = Pesc_localidade::with('pesc_municipio')->get();
         $municipios = Pesc_municipio::all();
         return view ( 'pesc_localidade.create', compact('localidades', 'municipios'));
     }
