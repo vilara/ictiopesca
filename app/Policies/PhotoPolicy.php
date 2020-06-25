@@ -23,4 +23,6 @@ class PhotoPolicy
     public function editPhoto(User $user, Photo $photo){
         return $user->id === $photo->user_id;
     }
+    
+   
 }

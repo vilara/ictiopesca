@@ -92,6 +92,7 @@
 					</thead>
 					<tbody>
 						@foreach($localidades as $localidade)
+						@can('view', $localidade)
 						<tr>
 							<td>{{$localidade->id}}</td>
 							<td><a href="{{ route('pesc_localidades.show',$localidade->id)}}"
@@ -126,6 +127,7 @@
 								</div>
 							</td>
 						</tr>
+						@endcan
 						@endforeach
 					</tbody>
 				</table>

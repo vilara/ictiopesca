@@ -8,6 +8,9 @@ use App\Pesc_municipio;
 
 class PescLocalidadeController extends Controller
 {
+    
+    
+   
     /**
      * Display a listing of the resource.
      *
@@ -25,6 +28,7 @@ class PescLocalidadeController extends Controller
      */
     public function create()
     {
+        
         $localidades = Pesc_localidade::with('pesc_municipio')->get();
         $municipios = Pesc_municipio::all();
         return view ( 'pesc_localidade.create', compact('localidades', 'municipios'));
@@ -65,6 +69,7 @@ class PescLocalidadeController extends Controller
     public function edit($id)
     {
         $pesc_localidade = Pesc_localidade::find($id);
+        
         $municipios = Pesc_municipio::all();
         
         return view('pesc_localidade.edit', compact('pesc_localidade', 'municipios'));
