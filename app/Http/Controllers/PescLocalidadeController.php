@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Pesc_localidade;
+use App\User;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 use App\Pesc_municipio;
+use Illuminate\Support\Facades\DB;
 
 class PescLocalidadeController extends Controller
 {
@@ -16,9 +19,20 @@ class PescLocalidadeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    
+   
+    public function index(Request $request, Pesc_localidade $data)
     {
-        //
+      
+        $data = DB::table('pesc_localidades')->select('id','localidade')->get();
+        
+           
+        if ($request->ajax()) {
+            return DataTables::of($data)->toJson();
+        }
+        
+        return view('pesc_localidade.index');
+        
     }
 
     /**

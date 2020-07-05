@@ -19,10 +19,22 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <!-- Main CSS-->
     <link rel="stylesheet" type="text/css" href="{{url('/')}}/css/main.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.2/css/buttons.dataTables.min.css">
+    
     <!-- Font-icon css-->
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+    
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+<!--         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" /> -->
+        <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+<!--         <link href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css" rel="stylesheet"> -->
+
+    
   </head>
   <body class="app sidebar-mini">
     <!-- Navbar-->
@@ -143,16 +155,117 @@
     <main class="app-content">
      @yield('content')
     </main>
+    
     <!-- Essential javascripts for application to work-->
     <script src="{{url('/')}}/js/jquery-3.3.1.min.js"></script>
     <script src="{{url('/')}}/js/popper.min.js"></script>
     <script src="{{url('/')}}/js/bootstrap.min.js"></script>
     <script src="{{url('/')}}/js/main.js"></script>
+    
     <!-- The javascript plugin to display page loading on top-->
     <script src="js/plugins/pace.min.js"></script>
+    
+    
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+        <script>
+            error=false
+            
+            function validate()
+            {
+                if(document.userForm.localidade.value !='' )
+                	document.userForm.btnsave.disabled=false
+                else
+                	document.userForm.btnsave.disabled=true
+            }
+        </script>
+    
+    
     <!-- Page specific javascripts-->
+    
+    
     <!-- Google analytics script-->
     <script type="text/javascript">
+
+
+
+    $(document).ready(function () {
+    var table = $('.data-table').DataTable({
+    select: false,
+    searching: true,
+    processing: true,
+    serverSide: true,
+    ajax: "{{ route('pesc_localidades.index') }}",
+    columns: [
+    {data: 'id', name: 'id'},
+    {data: 'localidade', name: 'localidade'},
+    ]
+    });
+
+    $(function() {
+  		$('.data-table1').DataTable({
+  		"searching": true,
+        "processing": false,
+        "serverSide": false,
+        dom: 'Bfrtip',
+        buttons: [
+        	{
+            	extend: 'excelHtml5',
+            	
+        	},
+        	
+        ],
+        ajax: "{{ route('pesc_mercados.index') }}",
+        columns: [
+          			  { data: 'id', name: 'id' },
+            		  { data: 'cat', name: 'cat' },
+            		  { data: 'localidade', name: 'localidade' },
+            		  { data: 'ct', name: 'ct' },
+            		  { data: 'cp', name: 'cp' },
+            		  { data: 'pt', name: 'pt' },
+            		  { data: 'cab', name: 'cab' },
+            		  { data: 'sexo', name: 'sexo' },
+            		  { data: 'cresc', name: 'cresc' },
+            		  { data: 'gg', name: 'gg' },
+            		  { data: 'gr', name: 'gr' },
+            		  { data: 'data', name: 'data' },
+//             		  { data: 'cf', name: 'cf' },
+//             		  { data: 'gen', name: 'gen' },
+//             		  { data: 'od', name: 'od' },
+//             		  { data: 'ap', name: 'ap' },
+            		 
+        		],
+        		
+        		 language: {
+        		        processing:     "Carregando dados...",
+        		        search:         "Procurar&nbsp;:",
+        		        loadingRecords: "Carregando dados...",
+        		        info:           "Mostrando _START_ a _END_ de _TOTAL_ totais de dados",
+        		        infoEmpty:      "Mostrando 0 a 0 de 0 totais de dados",
+        		        zeroRecords:    "Nenhum resultado encontrado",
+        		        emptyTable:     "Nenhum resultado encontrado",
+        		        infoFiltered:   "(filtrado de _MAX_ totais de dados)",
+        		        paginate: {
+        		            first:      "Primeira",
+        		            previous:   "Anterior",
+        		            next:       "Próxima",
+        		            last:       "Última"
+        		        },
+        		        },
+        		       
+        		   
+		
+ 			 })
+        });
+
+    
       if(document.location.hostname == 'pratikborsadiya.in') {
       	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -161,7 +274,12 @@
       	ga('create', 'UA-72504830-1', 'auto');
       	ga('send', 'pageview');
       }
+
+    });
+
     </script>
+    
+    
   </body>
 </html>
 

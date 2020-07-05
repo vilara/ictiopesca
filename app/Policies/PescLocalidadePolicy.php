@@ -30,7 +30,8 @@ class PescLocalidadePolicy
      */
     public function view(User $user, Pesc_localidade $pescLocalidade)
     {
-        return $user->id >0 && $pescLocalidade->id > 0;
+        
+        return $user->id >0;
     }
 
     /**

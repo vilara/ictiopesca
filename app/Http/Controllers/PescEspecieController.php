@@ -33,7 +33,7 @@ class PescEspecieController extends Controller
             $usuarios = Auth::user();
         }
         
-        $especies = Pesc_especie::all();
+        $especies = Pesc_especie::paginate(10);
         return view ( 'pesc_especie.create', compact('usuarios', 'especies'));
     }
 

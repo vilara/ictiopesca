@@ -113,6 +113,7 @@
                  
                 </tbody>
               </table>
+             {{ $especies->links() }}
             </div>
           </div>
 		

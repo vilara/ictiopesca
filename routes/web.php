@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\DataTables\pesc_mercadoDataTable;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,15 @@ Route::group(['middleware' => ['auth']], function(){
 Route::resource('usuarios', 'UsersController');
 Route::resource('pesc_especies', 'PescEspecieController');
 Route::resource('pesc_localidades', 'PescLocalidadeController');
-    
+Route::resource('pesc_mercados', 'PescMercadoController');
 });
 
+    Route::get('mercado', 'PescMercadoController@getMercado');
+
+    
+    Route::get('mercados', function(pesc_mercadoDataTable $dataTable) {
+        return $dataTable->render('mercados.index');
+    });
 
     
 Route::resource('photos', 'PhotoController');
