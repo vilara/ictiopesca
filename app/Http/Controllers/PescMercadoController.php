@@ -21,17 +21,17 @@ class PescMercadoController extends Controller
         if ($request->ajax()) {
             
 
-            $mercado = DB::table('pesc_col_mercado')
+            $mercado = DB::table('pesc_col_mercado')->select('pesc_col_mercado.id');
 //             ->join('pesc_especies', 'pesc_col_mercado.cat', '=', 'pesc_especies.id')
 //             ->join('pesc_localidades', 'pesc_col_mercado.loc', '=', 'pesc_localidades.id')
-            ->select('pesc_col_mercado.id',
+            
 //                 'pesc_especies.cat','pesc_localidades.localidade',
 //                     'pesc_col_mercado.ct','pesc_col_mercado.cp','pesc_col_mercado.pt',
 //                     'pesc_col_mercado.cab','pesc_col_mercado.sexo','pesc_col_mercado.cresc',
 //                 'pesc_col_mercado.gg','pesc_col_mercado.gr','pesc_col_mercado.data'
 //                 'pesc_col_mercado.cf',
 //                 'pesc_col_mercado.gen','pesc_col_mercado.od','pesc_col_mercado.ap',
-                );
+              
 //             'pesc_col_mercado.','pesc_col_mercado.','pesc_col_mercado.',
             return Datatables::of($mercado)->make(true);
         }
