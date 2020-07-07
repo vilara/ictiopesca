@@ -209,11 +209,23 @@
     ]
     });
 
+
+    var data = [
+        [
+            "Tiger Nixon",
+           
+        ],
+        [
+            "Garrett Winters",
+           
+        ]
+    ]
+
     $(function() {
   		$('.data-table1').DataTable({
   		"searching": true,
         "processing": false,
-        "serverSide": false,
+        "serverSide": true,
         dom: 'Bfrtip',
         buttons: [
         	{
