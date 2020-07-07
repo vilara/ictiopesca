@@ -210,22 +210,12 @@
     });
 
 
-    var data = [
-        [
-            "Tiger Nixon",
-           
-        ],
-        [
-            "Garrett Winters",
-           
-        ]
-    ]
 
     $(function() {
   		$('.data-table1').DataTable({
   		"searching": true,
         "processing": false,
-        "serverSide": true,
+        "serverSide": false,
         dom: 'Bfrtip',
         buttons: [
         	{
@@ -237,17 +227,17 @@
         ajax: "{{ route('pesc_mercados.index') }}",
         columns: [
           			  { data: 'id', name: 'id' },
-//             		  { data: 'cat', name: 'cat' },
-//             		  { data: 'localidade', name: 'localidade' },
-//             		  { data: 'ct', name: 'ct' },
-//             		  { data: 'cp', name: 'cp' },
-//             		  { data: 'pt', name: 'pt' },
-//             		  { data: 'cab', name: 'cab' },
-//             		  { data: 'sexo', name: 'sexo' },
-//             		  { data: 'cresc', name: 'cresc' },
-//             		  { data: 'gg', name: 'gg' },
-//             		  { data: 'gr', name: 'gr' },
-//             		  { data: 'data', name: 'data' },
+            		  { data: 'cat', name: 'cat' },
+            		  { data: 'localidade', name: 'localidade' },
+            		  { data: 'ct', name: 'ct' },
+            		  { data: 'cp', name: 'cp' },
+            		  { data: 'pt', name: 'pt' },
+            		  { data: 'cab', name: 'cab' },
+            		  { data: 'sexo', name: 'sexo' },
+            		  { data: 'cresc', name: 'cresc' },
+            		  { data: 'gg', name: 'gg' },
+            		  { data: 'gr', name: 'gr' },
+            		  { data: 'data', name: 'data' },
 //             		  { data: 'cf', name: 'cf' },
 //             		  { data: 'gen', name: 'gen' },
 //             		  { data: 'od', name: 'od' },
