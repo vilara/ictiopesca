@@ -31,8 +31,8 @@ Route::group(['middleware' => ['auth']], function(){
     
 Route::resource('usuarios', 'UsersController');
 Route::resource('pesc_especies', 'PescEspecieController');
-Route::resource('pesc_localidades', 'PescLocalidadeController');
 });
+Route::resource('pesc_localidades', 'PescLocalidadeController');
 Route::resource('pesc_mercados', 'PescMercadoController');
 
     Route::get('mercado', 'PescMercadoController@getMercado');

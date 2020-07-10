@@ -19,4 +19,7 @@ class Pesc_especie extends Model
     protected $table = 'pesc_especies';
     
     protected $primaryKey = 'id';
+    
+    
+  
 }

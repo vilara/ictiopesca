@@ -24,9 +24,7 @@ class PescLocalidadeController extends Controller
     public function index(Request $request, Pesc_localidade $data)
     {
       
-        $data = DB::table('pesc_localidades')->select('id','localidade')->get();
-        
-           
+        $data = Pesc_localidade::with('pesc_municipio')->get();
         if ($request->ajax()) {
             return DataTables::of($data)->toJson();
         }

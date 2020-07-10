@@ -1,4 +1,4 @@
-@extends('layouts.app') @section('title','Mercado') @section('content')
+@extends('layouts.app') @section('title','Usuários') @section('content')
 
 
 
@@ -7,19 +7,19 @@
 
 		<div class="col-md-12">
 	
-			<div class="card" style="widht:100%;">
+			<div class="card">
 
 				<div class="card-header">
 					<div class="row">
 						<div class="col-md-6 float-left">
 							
-							<h3>{{ __('Mercados') }}</h3>
+							<h3>{{ __('Biometria') }}</h3>
 						</div>
 
 						<div class=" col-md-6 float-right" align="right" style="color: white;">
-							<a class="btn btn-primary" type="submit" id="new-user"  data-toggle="modal">
-								<i class="fa fa-fw fa-lg fa-check-circle"></i>Cadastrar
-							</a>
+<!-- 							<a class="btn btn-primary" type="submit" id="new-user"  data-toggle="modal"> -->
+<!-- 								<i class="fa fa-fw fa-lg fa-check-circle"></i>Cadastrar -->
+<!-- 							</a> -->
 						</div>
 					
 					</div>
@@ -36,29 +36,48 @@
 					
 						<thead align="center">
 							<tr id="">
-								<th scope="col">id</th>
+								<th scope="col">ID</th>
 								<th scope="col">Espécie</th>
-								<th scope="col">Local</th>
+								<th scope="col">Localidade</th>
 								<th scope="col">CT</th>
 								<th scope="col">CP</th>
 								<th scope="col">PT</th>
-<!-- 								<th scope="col">Cab</th> -->
-<!-- 								<th scope="col">Sexo</th> -->
-<!-- 								<th scope="col">Cresc</th> -->
-<!-- 								<th scope="col">gg</th> -->
-<!-- 								<th scope="col">gr</th> -->
-<!-- 								<th scope="col">Data</th> -->
-<!-- 								<th scope="col">cf</th> -->
-<!-- 								<th scope="col">Gen</th> -->
-<!-- 								<th scope="col">OD</th> -->
-<!-- 								<th scope="col">AP</th> -->
-								
+								<th scope="col">CAB</th>
+								<th scope="col">SEXO</th>
+								<th scope="col">CRESC</th>
+								<th scope="col">GG</th>
+								<th scope="col">GR</th>
+								<th scope="col">DATA</th>
+								<th scope="col">CF</th>
+								<th scope="col">GEN</th>
+								<th scope="col">OD</th>
+								<th scope="col">AP</th>
 							</tr>
 						</thead>
 						
 						<tbody align="center">
 							
 						</tbody>
+						<tfoot>
+            <tr>
+               <th scope="col">ID</th>
+								<th scope="col">Espécie</th>
+								<th scope="col">Localidade</th>
+								<th scope="col">CT</th>
+								<th scope="col">CP</th>
+								<th scope="col">PT</th>
+								<th scope="col">CAB</th>
+								<th scope="col">SEXO</th>
+								<th scope="col">CRESC</th>
+								<th scope="col">GG</th>
+								<th scope="col">GR</th>
+								<th scope="col">DATA</th>
+								<th scope="col">CF</th>
+								<th scope="col">GEN</th>
+								<th scope="col">OD</th>
+								<th scope="col">AP</th>
+            </tr>
+        </tfoot>
 						
 					</table>
 
@@ -67,6 +86,11 @@
 		</div>
 	</div>
 </div>
+
+
+
+
+
 
 
 

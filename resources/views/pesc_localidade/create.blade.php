@@ -96,7 +96,7 @@
 						<tr>
 							<td>{{$localidade->id}}</td>
 							<td><a href="{{ route('pesc_localidades.show',$localidade->id)}}"
-								style="color: inherit;">{{ $localidade->localidade }}</a></td>
+								style="color: inherit;">{{ $localidade->loc }}</a></td>
 							<td>{{$localidade->pesc_municipio['municipio']}}</td>
 							<td>
 								<div class="row">

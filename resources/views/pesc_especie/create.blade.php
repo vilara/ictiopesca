@@ -91,7 +91,7 @@
                     @can('delete')
                     <a class="text-right" href="{{ route('pesc_especies.edit',$especie->id) }}" style="text-decoration:none; color: black;">
                     <i class="fa fa-pencil" aria-hidden="true"></i>
-                     &nbsp;&nbsp;&nbsp;&nbsp;|</a>
+                     &nbsp;&nbsp;&nbsp;&nbsp;</a>
                     @endcan
                     &nbsp;&nbsp;&nbsp;&nbsp;|
                     </div>

@@ -125,7 +125,7 @@
 <!--             <li><a class="treeview-item" href="*"><i class="icon fa fa-circle-o"></i>Perfil</a></li> -->
           </ul>
         </li>
-        
+        @can('update')
            <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Admin</span><i class="treeview-indicator fa fa-angle-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item active" href="{{route('pesc_especies.create')}}"><i class="icon fa fa-circle-o"></i>Espécies</a></li>
@@ -133,6 +133,15 @@
 <!--             <li><a class="treeview-item" href="*"><i class="icon fa fa-circle-o"></i>Perfil</a></li> -->
           </ul>
         </li>
+        @endcan
+        
+            @can('read')
+           <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Consultas</span><i class="treeview-indicator fa fa-angle-right"></i></a>
+          <ul class="treeview-menu">
+            <li><a class="treeview-item active" href="{{route('pesc_mercados.index')}}"><i class="icon fa fa-circle-o"></i>Biometria</a></li>
+          </ul>
+        </li>
+        @endcan
 
  
 <!--         <li class="treeview is-expanded"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon fa fa-file-text"></i><span class="app-menu__label">Pages</span><i class="treeview-indicator fa fa-angle-right"></i></a> -->
@@ -175,6 +184,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.html5.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.6.2/js/buttons.print.min.js"></script>
+<script src="http://cdn.datatables.net/plug-ins/1.10.15/dataRender/datetime.js"></script>
         <script>
             error=false
             
@@ -193,10 +203,8 @@
     
     <!-- Google analytics script-->
     <script type="text/javascript">
-
-
-
     $(document).ready(function () {
+        
     var table = $('.data-table').DataTable({
     select: false,
     searching: true,
@@ -204,46 +212,70 @@
     serverSide: true,
     ajax: "{{ route('pesc_localidades.index') }}",
     columns: [
-    {data: 'id', name: 'id'},
-    {data: 'localidade', name: 'localidade'},
+    	 {data: 'id'},
+    	    {data: 'pesc_municipio.municipio'},
     ]
     });
 
 
 
-    $(function() {
-  		$('.data-table1').DataTable({
-  		"searching": true,
-        "processing": false,
-        "serverSide": true,
-        dom: 'Bfrtip',
-        buttons: [
-        	{
-            	extend: 'excelHtml5',
-            	
-        	},
-        	
-        ],
+    $('.data-table1 tfoot th').each( function () {
+        var title = $(this).text();
+        $(this).html( '<input type="text" placeholder="pesquisar '+title+'" />' );
+    } );
+    	 var table = $('.data-table1').DataTable({
+
+    		 initComplete: function () {
+    	            // Apply the search
+    	            this.api().columns().every( function () {
+    	                var that = this;
+    	 
+    	                $( 'input', this.footer() ).on( 'keyup change clear', function () {
+    	                    if ( that.search() !== this.value ) {
+    	                        that.search( this.value ).draw();
+    	                    }
+    	                } );
+    	            } );
+    	        },
+        	 
+    		 	scrollX: true,
+    		    lengthMenu: [[10, 25, 50, -1], [10, 25, 50, "All"]],
+    		    searching: true,
+    		    processing: true,
+    		    serverSide: true,
+    		    dom: 'Bfrtip',
+    	        lengthMenu: [
+    	            [ 10, 25, 50, -1 ],
+    	            [ '10 rows', '25 rows', '50 rows', 'Show all' ]
+    	        ],
+    	        buttons: [
+    	        	'copyHtml5',
+    	            'excelHtml5',
+    	            'csvHtml5',
+    	            'pdfHtml5',
+    	            'pageLength'
+    	        ],
         ajax: "{{ route('pesc_mercados.index') }}",
         columns: [
-          			  { data: 'id', name: 'id' },
-            		  { data: 'cat', name: 'cat' },
-            		  { data: 'localidade', name: 'localidade' },
+        	{data: 'id', name: 'id'},
+        	{data: 'pesc_especie.cat', name: 'pesc_especie.cat'},
+        	{data: 'pesc_localidade.loc', name: 'pesc_localidade.loc'},
             		  { data: 'ct', name: 'ct' },
             		  { data: 'cp', name: 'cp' },
             		  { data: 'pt', name: 'pt' },
-//             		  { data: 'cab', name: 'cab' },
-//             		  { data: 'sexo', name: 'sexo' },
-//             		  { data: 'cresc', name: 'cresc' },
-//             		  { data: 'gg', name: 'gg' },
-//             		  { data: 'gr', name: 'gr' },
-//             		  { data: 'data', name: 'data' },
-//             		  { data: 'cf', name: 'cf' },
-//             		  { data: 'gen', name: 'gen' },
-//             		  { data: 'od', name: 'od' },
-//             		  { data: 'ap', name: 'ap' },
+            		  { data: 'cab', name: 'cab' },
+            		  { data: 'sexo', name: 'sexo' },
+            		  { data: 'cresc', name: 'cresc' },
+            		  { data: 'gg', name: 'gg' },
+            		  { data: 'gr', name: 'gr' },
+            		  { data: 'data', name: 'data' },
+            		  { data: 'cf', name: 'cf' },
+            		  { data: 'gen', name: 'gen' },
+            		  { data: 'od', name: 'od' },
+            		  { data: 'ap', name: 'ap' },
             		 
         		],
+        		 
         		
         		 language: {
         		        processing:     "Carregando dados...",
@@ -265,8 +297,8 @@
         		   
 		
  			 })
-        });
-
+ 			 
+ 			
     
       if(document.location.hostname == 'pratikborsadiya.in') {
       	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -276,12 +308,9 @@
       	ga('create', 'UA-72504830-1', 'auto');
       	ga('send', 'pageview');
       }
-
     });
-
     </script>
     
     
   </body>
 </html>
-
